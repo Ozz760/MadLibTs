@@ -3,9 +3,13 @@ import InputField from "./components/InputField";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline ">Hello World</h1>
-      <h2 className="text-2xl font-semibold underline">What's is up?</h2>
+    <div className="">
+      <h1 className="text-3xl font-bold underline flex flex-col items-center justify-center">
+        Hello World
+      </h1>
+      <h2 className="text-2xl font-semibold underline flex flex-col items-center justify-center">
+        What's up?
+      </h2>
       <InputField />
     </div>
   );
