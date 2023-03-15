@@ -13,6 +13,7 @@ const InputField: React.FC = () => {
           placeholder="Enter a noun"
         ></input>
       </div>
+      <h1 className=" text-2xl">This is going to be an awesome project!</h1>
     </div>
   );
 };
