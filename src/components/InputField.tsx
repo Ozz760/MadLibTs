@@ -5,11 +5,13 @@ const InputField: React.FC = () => {
   const [verb, setVerb] = useState<string>("");
   const [adjective, setAdjective] = useState<string>("");
 
+  // I might have to have separate input value for each state.
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { currentTarget } = e;
     const inputType = currentTarget.name;
     const inputValue = currentTarget.value;
 
+    // This logic is saying that if either one is true place that one on the screen. What I'm trying to do is to have each display on each p tag when I hit the submit button.
     if (inputType === "noun") {
       setNoun(inputValue);
     } else if (inputType === "verb") {
@@ -28,8 +30,8 @@ const InputField: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit}>
+      <div className="flex flex-col items-center justify-center">
         <h1 className="text-2xl">Enter a noun</h1>
         <div className=" flex flex-col items-center justify-center">
           <input
@@ -63,17 +65,17 @@ const InputField: React.FC = () => {
             onChange={handleInputChange}
           ></input>
         </div>
-      </form>
-      <button className="bg-white rounded-full p-2" type="submit">
-        Make a MadLib!
-      </button>
-      {/* View where to see values */}
-      <div>
-        <p>{noun}</p>
-        <p>{verb}</p>
-        <p>{adjective}</p>
+        <button className="bg-white rounded-full p-2" type="submit">
+          Make a MadLib!
+        </button>
+        {/* View where to see values */}
+        <div>
+          <p>{noun}</p>
+          <p>{verb}</p>
+          <p>{adjective}</p>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 
