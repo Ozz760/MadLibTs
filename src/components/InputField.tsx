@@ -5,23 +5,7 @@ const InputField: React.FC = () => {
   const [verb, setVerb] = useState<string>("");
   const [adjective, setAdjective] = useState<string>("");
 
-  // I might have to have separate input value for each state.
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { currentTarget } = e;
-    const inputType = currentTarget.name;
-    const inputValue = currentTarget.value;
-
-    // This logic is saying that if either one is true place that one on the screen. What I'm trying to do is to have each display on each p tag when I hit the submit button.
-    if (inputType === "noun") {
-      setNoun(inputValue);
-    } else if (inputType === "verb") {
-      setVerb(inputValue);
-    } else {
-      setAdjective(inputValue);
-    }
-  };
-
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     setNoun("");
@@ -40,7 +24,7 @@ const InputField: React.FC = () => {
             name="input"
             placeholder="Noun"
             value={noun}
-            onChange={handleInputChange}
+            onChange={(e) => setNoun(e.target.value)}
           ></input>
         </div>
         <div className="flex flex-col items-center justify-center">
@@ -51,7 +35,7 @@ const InputField: React.FC = () => {
             name="input"
             placeholder="Verb"
             value={verb}
-            onChange={handleInputChange}
+            onChange={(e) => setVerb(e.target.value)}
           ></input>
         </div>
         <div className="flex flex-col items-center justify-center">
@@ -62,7 +46,7 @@ const InputField: React.FC = () => {
             name="input"
             placeholder="Adjective"
             value={adjective}
-            onChange={handleInputChange}
+            onChange={(e) => setAdjective(e.target.value)}
           ></input>
         </div>
         <button className="bg-white rounded-full p-2" type="submit">
