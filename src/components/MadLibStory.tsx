@@ -1,13 +1,18 @@
 import React from "react";
 
-// I might have to take the function from InputField and put it here and just pass the props down.
 interface MadLibStoryProps {
   noun: string;
   verb: string;
   adjective: string;
+  handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const MadLibStory = ({ noun, verb, adjective }: MadLibStoryProps) => {
+const MadLibStory = ({
+  noun,
+  verb,
+  adjective,
+  handleFormSubmit,
+}: MadLibStoryProps) => {
   return <div>MadLibStory</div>;
 };
 
