@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MadLibStory from "./MadLibStory";
 
 const InputField: React.FC = () => {
   const [noun, setNoun] = useState<string>("");
@@ -53,11 +54,7 @@ const InputField: React.FC = () => {
           Make a MadLib!
         </button>
         {/* View where to see values */}
-        <div>
-          <p>{noun}</p>
-          <p>{verb}</p>
-          <p>{adjective}</p>
-        </div>
+        <MadLibStory noun={noun} verb={verb} adjective={adjective} />
       </div>
     </form>
   );
