@@ -49,9 +49,6 @@ const InputField: React.FC = () => {
           onChange={(e) => setAdjective(e.target.value)}
         ></input>
       </div>
-      <button className="bg-white rounded-full p-2" type="submit">
-        Make a MadLib!
-      </button>
       {/* View where to see values */}
       <MadLibStory
         noun={noun}

@@ -7,13 +7,19 @@ interface MadLibStoryProps {
   handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const MadLibStory = ({
+const MadLibStory: React.FC<MadLibStoryProps> = ({
   noun,
   verb,
   adjective,
   handleFormSubmit,
-}: MadLibStoryProps) => {
-  return <div>MadLibStory</div>;
+}) => {
+  return (
+    <div>
+      <button className="bg-white rounded-full p-2" type="submit">
+        Make a MadLib!
+      </button>
+    </div>
+  );
 };
 
 export default MadLibStory;
