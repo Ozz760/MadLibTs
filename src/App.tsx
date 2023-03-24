@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import InputField from "./components/InputField";
-import MadLibStory from "./components/MadLibStory";
 
 const App: React.FC = () => {
   return (
