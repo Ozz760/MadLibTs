@@ -5,6 +5,7 @@ const InputField: React.FC = () => {
   const [noun, setNoun] = useState<string>("");
   const [verb, setVerb] = useState<string>("");
   const [adjective, setAdjective] = useState<string>("");
+  const [arrayWords, setArrayWords] = useState<string[]>([]);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -55,6 +56,8 @@ const InputField: React.FC = () => {
         verb={verb}
         adjective={adjective}
         handleFormSubmit={handleFormSubmit}
+        arrayWords={arrayWords}
+        setArrayWords={setArrayWords}
       />
     </div>
   );
