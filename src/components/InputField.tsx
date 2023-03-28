@@ -50,7 +50,7 @@ const InputField: React.FC = () => {
           onChange={(e) => setAdjective(e.target.value)}
         ></input>
       </div>
-      {/* View where to see values */}
+      {/* View to see values */}
       <MadLibStory
         noun={noun}
         verb={verb}

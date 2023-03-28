@@ -9,6 +9,10 @@ interface MadLibStoryProps {
   setArrayWords: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
+const makeMadLib = (noun: string, verb: string, adjective: string) => {
+  return `The ${noun} ${verb} the ${adjective} dog`;
+};
+
 const MadLibStory: React.FC<MadLibStoryProps> = ({
   noun,
   verb,
@@ -19,18 +23,12 @@ const MadLibStory: React.FC<MadLibStoryProps> = ({
 }) => {
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="flex justify-center items-center m-4">
+      <div className="flex flex-col justify-center items-center m-4">
         <button className="bg-white rounded-full p-2" type="submit">
           Make a MadLib!
         </button>
+        <div className="m-4">{makeMadLib(noun, verb, adjective)}</div>
       </div>
-      {/* When the user hits submit this markup will show with the input words. Otherwise this text will the hidden */}
-      <div>
-        <p>
-          This is a test to the MadLib story. {noun}, {verb}, {adjective}
-        </p>
-      </div>
-      {/* /end */}
     </form>
   );
 };
