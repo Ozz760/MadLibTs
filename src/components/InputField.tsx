@@ -5,18 +5,26 @@ const InputField: React.FC = () => {
   const [noun, setNoun] = useState<string>("");
   const [verb, setVerb] = useState<string>("");
   const [adjective, setAdjective] = useState<string>("");
-  const [story, setStory] = useState<string>("");
+  let [story, setStory] = useState<string>("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    // Display story.
-    const story = `The ${noun} ${verb} the ${adjective} dog.`;
+    // I want to be able to add different stories so the user can get different stories by random.
+    let num = Math.abs(Math.random() % 2);
+    if (num === 0) {
+      story = `The ${noun} ${verb} the ${adjective} dog.`;
+    } else {
+      story = `The ${noun} ${verb} the ${adjective} cat.`;
+    }
+
     setStory(story);
 
     setNoun("");
     setVerb("");
     setAdjective("");
+
+    // Later I want to add a button to clear the story.
   };
 
   return (
