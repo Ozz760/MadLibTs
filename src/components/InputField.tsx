@@ -11,12 +11,14 @@ const InputField: React.FC = () => {
     e.preventDefault();
 
     // I want to be able to add different stories so the user can get different stories by random.
-    let num = Math.abs(Math.random() % 2);
+    let num = Math.floor(Math.random() * 2);
     if (num === 0) {
       story = `The ${noun} ${verb} the ${adjective} dog.`;
     } else {
       story = `The ${noun} ${verb} the ${adjective} cat.`;
     }
+
+    console.log(num);
 
     setStory(story);
 
