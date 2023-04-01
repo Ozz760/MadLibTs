@@ -7,10 +7,10 @@ const InputField: React.FC = () => {
   const [adjective, setAdjective] = useState<string>("");
   let [story, setStory] = useState<string>("");
 
+  // Function to make a MabLib.
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    // I want to be able to add different stories so the user can get different stories by random.
     let num = Math.floor(Math.random() * 2);
     if (num === 0) {
       story = `The ${noun} ${verb} the ${adjective} dog.`;
@@ -18,15 +18,16 @@ const InputField: React.FC = () => {
       story = `The ${noun} ${verb} the ${adjective} cat.`;
     }
 
-    console.log(num);
-
     setStory(story);
-
     setNoun("");
     setVerb("");
     setAdjective("");
+  };
 
-    // Later I want to add a button to clear the story.
+  // Function to restart the story.
+  const restartStory = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setStory("");
   };
 
   return (
@@ -65,7 +66,11 @@ const InputField: React.FC = () => {
         ></input>
       </label>
       {/* View to see values */}
-      <MadLibStory handleFormSubmit={handleFormSubmit} story={story} />
+      <MadLibStory
+        handleFormSubmit={handleFormSubmit}
+        restartStory={restartStory}
+        story={story}
+      />
     </div>
   );
 };
