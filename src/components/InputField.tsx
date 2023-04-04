@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputText from "./InputText";
 import MadLibStory from "./MadLibStory";
 
 const InputField: React.FC = () => {
@@ -71,6 +72,8 @@ const InputField: React.FC = () => {
         restartStory={restartStory}
         story={story}
       />
+      {/* Working on the switch cases */}
+      <InputText />
     </div>
   );
 };
