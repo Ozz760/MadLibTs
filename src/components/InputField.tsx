@@ -73,6 +73,7 @@ const InputField: React.FC = () => {
         story={story}
       />
       {/* Working on the switch cases */}
+      <br />
       <InputText />
     </div>
   );
