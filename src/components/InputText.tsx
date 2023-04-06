@@ -4,9 +4,14 @@ type InputType = "noun" | "verb" | "adjective";
 
 const InputText: React.FC = () => {
   const [activeInput, setActiveInput] = useState<InputType>("noun");
-  const [noun, setNoun] = useState("");
-  const [verb, setVerb] = useState("");
-  const [adjective, setAdjective] = useState("");
+  const [inputValues, setInputValues] = useState({
+    noun: "",
+    verb: "",
+    adjective: "",
+  });
+  // const [noun, setNoun] = useState("");
+  // const [verb, setVerb] = useState("");
+  // const [adjective, setAdjective] = useState("");
   let [story, setStory] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -14,18 +19,18 @@ const InputText: React.FC = () => {
 
     let num = Math.floor(Math.random() * 2);
     if (num === 0) {
-      story = `The ${noun} ${verb} the ${adjective} dog.`;
+      story = `The ${inputValues.noun} ${inputValues.verb} the ${inputValues.adjective} dog.`;
     } else {
-      story = `The ${noun} ${verb} the ${adjective} cat.`;
+      story = `The ${inputValues.noun} ${inputValues.verb} the ${inputValues.adjective} cat.`;
     }
 
     setStory(story);
-    setNoun("");
-    setVerb("");
-    setAdjective("");
+    // setNoun("");
+    // setVerb("");
+    // setAdjective("");
   };
 
-  const handleNextInput = () => {
+  const handleNextInput = (): void => {
     switch (activeInput) {
       case "noun":
         setActiveInput("verb");
@@ -38,6 +43,13 @@ const InputText: React.FC = () => {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setInputValues({
+      ...inputValues,
+      [activeInput]: e.target.value,
+    });
+  };
+
   return (
     <form onSubmit={handleFormSubmit}>
       {activeInput === "noun" && (
@@ -46,8 +58,8 @@ const InputText: React.FC = () => {
           type="text"
           name="input"
           placeholder="Noun"
-          value={noun}
-          onChange={(e) => setNoun(e.target.value)}
+          onChange={handleInputChange}
+          value={inputValues.noun}
         />
       )}
       {activeInput === "verb" && (
@@ -56,8 +68,8 @@ const InputText: React.FC = () => {
           type="text"
           name="input"
           placeholder="Verb"
-          value={verb}
-          onChange={(e) => setVerb(e.target.value)}
+          onChange={handleInputChange}
+          value={inputValues.verb}
         />
       )}
       {activeInput === "adjective" && (
@@ -66,8 +78,8 @@ const InputText: React.FC = () => {
           type="text"
           name="input"
           placeholder="Adjective"
-          value={adjective}
-          onChange={(e) => setAdjective(e.target.value)}
+          onChange={handleInputChange}
+          value={inputValues.adjective}
         />
       )}
       <button onClick={handleNextInput}>Next</button>
