@@ -9,9 +9,7 @@ const InputText: React.FC = () => {
     verb: "",
     adjective: "",
   });
-  // const [noun, setNoun] = useState("");
-  // const [verb, setVerb] = useState("");
-  // const [adjective, setAdjective] = useState("");
+  const [showInput, setShowInput] = useState(false);
   let [story, setStory] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -25,9 +23,6 @@ const InputText: React.FC = () => {
     }
 
     setStory(story);
-    // setNoun("");
-    // setVerb("");
-    // setAdjective("");
   };
 
   const handleNextInput = (): void => {
@@ -48,46 +43,57 @@ const InputText: React.FC = () => {
       ...inputValues,
       [activeInput]: e.target.value,
     });
+
+    if (e.target.name === "noun" && e.target.value) {
+      setShowInput(true);
+    }
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      {activeInput === "noun" && (
-        <input
-          className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-          type="text"
-          name="input"
-          placeholder="Noun"
-          onChange={handleInputChange}
-          value={inputValues.noun}
-        />
-      )}
-      {activeInput === "verb" && (
-        <input
-          className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-          type="text"
-          name="input"
-          placeholder="Verb"
-          onChange={handleInputChange}
-          value={inputValues.verb}
-        />
-      )}
-      {activeInput === "adjective" && (
-        <input
-          className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-          type="text"
-          name="input"
-          placeholder="Adjective"
-          onChange={handleInputChange}
-          value={inputValues.adjective}
-        />
-      )}
-      <button onClick={handleNextInput}>Next</button>
-      <button className="bg-white rounded-full p-3" type="submit">
-        Make a MadLib!
-      </button>
-      <div>{story}</div>
-    </form>
+    <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleFormSubmit}>
+        {activeInput === "noun" && (
+          <input
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
+            type="text"
+            name="noun"
+            placeholder="Noun"
+            onChange={handleInputChange}
+            value={inputValues.noun}
+          />
+        )}
+        {/* This part is working right now. */}
+        {showInput && (
+          <input
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
+            type="text"
+            name="verb"
+            placeholder="Verb"
+            onChange={handleInputChange}
+            value={inputValues.verb}
+          />
+        )}
+        {showInput && (
+          <input
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
+            type="text"
+            name="adjective"
+            placeholder="Adjective"
+            onChange={handleInputChange}
+            value={inputValues.adjective}
+          />
+        )}
+        <div className="flex flex-col">
+          <button className="p-3" onClick={handleNextInput}>
+            Next
+          </button>
+          <button className="bg-white rounded-full p-3" type="submit">
+            Make a MadLib!
+          </button>
+        </div>
+        <div className="p-5 flex items-center justify-center">{story}</div>
+      </form>
+    </div>
   );
 };
 

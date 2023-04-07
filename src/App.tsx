@@ -1,10 +1,12 @@
 import React from "react";
-import InputField from "./components/InputField";
+// import InputField from "./components/InputField";
+import InputText from "./components/InputText";
 
 const App: React.FC = () => {
   return (
     <div>
-      <InputField />
+      {/* <InputField /> */}
+      <InputText />
     </div>
   );
 };
