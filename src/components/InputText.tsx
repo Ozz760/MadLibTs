@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 
-type InputType = "noun" | "verb" | "adjective";
-
 const InputText: React.FC = () => {
-  const [activeInput, setActiveInput] = useState<InputType>("noun");
   const [inputValues, setInputValues] = useState({
     noun: "",
     verb: "",
@@ -25,23 +22,10 @@ const InputText: React.FC = () => {
     setStory(story);
   };
 
-  const handleNextInput = (): void => {
-    switch (activeInput) {
-      case "noun":
-        setActiveInput("verb");
-        break;
-      case "verb":
-        setActiveInput("adjective");
-        break;
-      case "adjective":
-        break;
-    }
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputValues({
       ...inputValues,
-      [activeInput]: e.target.value,
+      [e.target.name]: e.target.value,
     });
 
     if (e.target.name === "noun" && e.target.value) {
@@ -52,16 +36,14 @@ const InputText: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <form onSubmit={handleFormSubmit}>
-        {activeInput === "noun" && (
-          <input
-            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-            type="text"
-            name="noun"
-            placeholder="Noun"
-            onChange={handleInputChange}
-            value={inputValues.noun}
-          />
-        )}
+        <input
+          className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
+          type="text"
+          name="noun"
+          placeholder="Noun"
+          onChange={handleInputChange}
+          value={inputValues.noun}
+        />
         {/* This part is working right now. */}
         {showInput && (
           <input
@@ -84,9 +66,6 @@ const InputText: React.FC = () => {
           />
         )}
         <div className="flex flex-col">
-          <button className="p-3" onClick={handleNextInput}>
-            Next
-          </button>
           <button className="bg-white rounded-full p-3" type="submit">
             Make a MadLib!
           </button>
