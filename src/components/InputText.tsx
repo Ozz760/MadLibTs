@@ -9,6 +9,7 @@ const InputText: React.FC = () => {
   // Have a state to show the input fields for each word.
   const [showInput, setShowInput] = useState(false);
   const [showInputA, setShowInputA] = useState(false);
+  const [madLib, setMadLib] = useState(false);
   let [story, setStory] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -37,6 +38,10 @@ const InputText: React.FC = () => {
     if (e.target.name === "verb" && e.target.value) {
       setShowInputA(true);
     }
+
+    if (e.target.name === "adjective" && e.target.value) {
+      setMadLib(true);
+    }
   };
 
   return (
@@ -50,7 +55,6 @@ const InputText: React.FC = () => {
           onChange={handleInputChange}
           value={inputValues.noun}
         />
-        {/* This part is working right now. */}
         {showInput && (
           <input
             className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
@@ -71,11 +75,13 @@ const InputText: React.FC = () => {
             value={inputValues.adjective}
           />
         )}
-        <div className="flex flex-col">
-          <button className="bg-white rounded-full p-3" type="submit">
-            Make a MadLib!
-          </button>
-        </div>
+        {madLib && (
+          <div className="flex flex-col">
+            <button className="bg-white rounded-full p-3" type="submit">
+              Make a MadLib!
+            </button>
+          </div>
+        )}
         <div className="p-5 flex items-center justify-center">{story}</div>
       </form>
     </div>
