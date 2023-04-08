@@ -6,7 +6,9 @@ const InputText: React.FC = () => {
     verb: "",
     adjective: "",
   });
+  // Have a state to show the input fields for each word.
   const [showInput, setShowInput] = useState(false);
+  const [showInputA, setShowInputA] = useState(false);
   let [story, setStory] = useState("");
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -31,6 +33,10 @@ const InputText: React.FC = () => {
     if (e.target.name === "noun" && e.target.value) {
       setShowInput(true);
     }
+
+    if (e.target.name === "verb" && e.target.value) {
+      setShowInputA(true);
+    }
   };
 
   return (
@@ -40,7 +46,7 @@ const InputText: React.FC = () => {
           className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
           type="text"
           name="noun"
-          placeholder="Noun"
+          placeholder="noun"
           onChange={handleInputChange}
           value={inputValues.noun}
         />
@@ -55,7 +61,7 @@ const InputText: React.FC = () => {
             value={inputValues.verb}
           />
         )}
-        {showInput && (
+        {showInputA && (
           <input
             className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
             type="text"
