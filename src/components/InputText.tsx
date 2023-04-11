@@ -31,58 +31,66 @@ const InputText: React.FC = () => {
       [e.target.name]: e.target.value,
     });
 
-    if (e.target.name === "noun" && e.target.value) {
+    if (e.target.name === "noun") {
       setShowInput(true);
     }
 
-    if (e.target.name === "verb" && e.target.value) {
+    if (e.target.name === "verb") {
       setShowInputA(true);
     }
 
-    if (e.target.name === "adjective" && e.target.value) {
+    if (e.target.name === "adjective") {
       setMadLib(true);
     }
   };
 
   return (
-    <div className="">
+    <div className=" h-screen w-full bg-gradient-to-b from-white to-slate-500">
       <form onSubmit={handleFormSubmit}>
-        <input
-          className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-          type="text"
-          name="noun"
-          placeholder="noun"
-          onChange={handleInputChange}
-          value={inputValues.noun}
-        />
-        {showInput && (
+        <div className="flex items-center justify-center">
           <input
-            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 shadow-sm focus:outline-none focus:border-black w-auto item-center flex"
             type="text"
-            name="verb"
-            placeholder="Verb"
+            name="noun"
+            placeholder="noun"
             onChange={handleInputChange}
-            value={inputValues.verb}
+            value={inputValues.noun}
           />
-        )}
-        {showInputA && (
-          <input
-            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-full p-1 block shadow-sm focus:outline-none focus:border-black"
-            type="text"
-            name="adjective"
-            placeholder="Adjective"
-            onChange={handleInputChange}
-            value={inputValues.adjective}
-          />
-        )}
-        {madLib && (
-          <div className="flex flex-col">
-            <button className="bg-white rounded-full p-3" type="submit">
-              Make a MadLib!
-            </button>
-          </div>
-        )}
-        <div className="p-5 flex items-center justify-center">{story}</div>
+        </div>
+        <div className="flex items-center justify-center">
+          {showInput && (
+            <input
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-auto p-1 block shadow-sm focus:outline-none focus:border-black"
+              type="text"
+              name="verb"
+              placeholder="Verb"
+              onChange={handleInputChange}
+              value={inputValues.verb}
+            />
+          )}
+        </div>
+        <div className="flex items-center justify-center">
+          {showInputA && (
+            <input
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-auto p-1 block shadow-sm focus:outline-none focus:border-black"
+              type="text"
+              name="adjective"
+              placeholder="Adjective"
+              onChange={handleInputChange}
+              value={inputValues.adjective}
+            />
+          )}
+        </div>
+        <div className="flex items-center justify-center">
+          {madLib && (
+            <div className="flex flex-col">
+              <button className="bg-white rounded-full p-3 w-fit" type="submit">
+                Make a MadLib!
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="p-5 text-center">{story}</div>
       </form>
     </div>
   );
