@@ -49,7 +49,7 @@ const InputText: React.FC = () => {
       <form onSubmit={handleFormSubmit}>
         <div className="flex items-center justify-center">
           <input
-            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 shadow-sm focus:outline-none focus:border-black w-auto item-center flex"
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
             type="text"
             name="noun"
             placeholder="noun"
@@ -60,7 +60,7 @@ const InputText: React.FC = () => {
         <div className="flex items-center justify-center">
           {showInput && (
             <input
-              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-auto p-1 block shadow-sm focus:outline-none focus:border-black"
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
               type="text"
               name="verb"
               placeholder="Verb"
@@ -72,7 +72,7 @@ const InputText: React.FC = () => {
         <div className="flex items-center justify-center">
           {showInputA && (
             <input
-              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 w-auto p-1 block shadow-sm focus:outline-none focus:border-black"
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
               type="text"
               name="adjective"
               placeholder="Adjective"
