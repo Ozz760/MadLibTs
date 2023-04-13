@@ -1,8 +1,8 @@
 import React from "react";
 
-const IntroText = () => {
+const IntroText: React.FC = () => {
   return (
-    <div className="w-full h-32 bg-gradient-to-b from-slate-500 to-white">
+    <div className="w-full h-32 bg-gradient-to-b from-slate-500 to-white pt-2">
       <h1 className="text-center text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-400 to-black">
         Mad Libs
       </h1>

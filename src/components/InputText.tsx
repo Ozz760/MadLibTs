@@ -26,6 +26,8 @@ const InputText: React.FC = () => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+
     setInputValues({
       ...inputValues,
       [e.target.name]: e.target.value,
@@ -45,14 +47,14 @@ const InputText: React.FC = () => {
   };
 
   return (
-    <div className=" h-screen w-full bg-gradient-to-b from-white to-slate-500">
+    <div className=" h-screen w-full bg-gradient-to-b from-white to-slate-500 pt-2">
       <form onSubmit={handleFormSubmit}>
         <div className="flex items-center justify-center">
           <input
-            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
+            className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow hover:shadow-md hover:shadow-slate-600 focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
             type="text"
             name="noun"
-            placeholder="noun"
+            placeholder="Noun"
             onChange={handleInputChange}
             value={inputValues.noun}
           />
@@ -60,7 +62,7 @@ const InputText: React.FC = () => {
         <div className="flex items-center justify-center">
           {showInput && (
             <input
-              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow hover:shadow-md hover:shadow-slate-600 focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
               type="text"
               name="verb"
               placeholder="Verb"
@@ -72,7 +74,7 @@ const InputText: React.FC = () => {
         <div className="flex items-center justify-center">
           {showInputA && (
             <input
-              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
+              className="placeholder:italic placeholder:text-slate-500 border border-slate-200 rounded-md pl-2 pr-3 bg-white m-5 p-1 focus:outline-none shadow hover:shadow-md hover:shadow-slate-600 focus:shadow-md focus:shadow-slate-600 w-7/12 item-center flex"
               type="text"
               name="adjective"
               placeholder="Adjective"
@@ -84,8 +86,11 @@ const InputText: React.FC = () => {
         <div className="flex items-center justify-center">
           {madLib && (
             <div className="flex flex-col">
-              <button className="bg-white rounded-full p-3 w-fit" type="submit">
-                Make a MadLib!
+              <button
+                className="bg-white rounded-full p-3 w-full m-5 shadow-md shadow-slate-600 hover:shadow-lg hover:shadow-slate-600 transition ease-in-out duration-200 delay-100"
+                type="submit"
+              >
+                MadLib
               </button>
             </div>
           )}
