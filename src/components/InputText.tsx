@@ -95,7 +95,7 @@ const InputText: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="p-5 text-center">{story}</div>
+        <div className="p-5 text-center text-2xl text-slate-700">{story}</div>
       </form>
     </div>
   );
