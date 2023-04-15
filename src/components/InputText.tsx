@@ -17,9 +17,9 @@ const InputText: React.FC = () => {
 
     let num = Math.floor(Math.random() * 2);
     if (num === 0) {
-      story = `The ${inputValues.noun} ${inputValues.verb} the ${inputValues.adjective} dog.`;
+      story = `Once upon a time, there was a ${inputValues.noun} named Bob. Bob loved to ${inputValues.verb} every day, but he was a very ${inputValues.adjective} person. One day, Bob decided to ${inputValues.verb} to the top of a nearby mountain. The climb was steep and difficult, but Bob was determined. When he finally reached the top, he was exhausted but elated. The view from the summit was breathtaking! Bob sat down to catch his breath and took in the ${inputValues.adjective} scenery around him. From that day on, Bob made a point to ${inputValues.verb} to the top of that mountain whenever he needed to clear his mind and remind himself that he was capable of achieving great things.`;
     } else {
-      story = `The ${inputValues.noun} ${inputValues.verb} the ${inputValues.adjective} cat.`;
+      story = `There once was ${inputValues.adjective} cat named Fluffy. Fluffy loved to ${inputValues.verb} around the house all day, but sometimes he got bored. One day, he discovered ${inputValues.noun} in the corner of the room. Fluffy was intrigued and began to ${inputValues.verb}with it. Before he knew it, he had created a huge mess! Fluffy's owner walked in and was not happy about the mess, but couldn't help but laugh at the sight of Fluffy covered in ${inputValues.adjective} ${inputValues.noun}. From then on, Fluffy's owner made sure to give him plenty of toys to play with so he wouldn't make any more ${inputValues.adjective} messes.`;
     }
 
     setStory(story);
@@ -95,7 +95,9 @@ const InputText: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="p-5 text-center text-2xl text-slate-700">{story}</div>
+        <div className="p-5 text-center text-2xl text-slate-700 m-9">
+          {story}
+        </div>
       </form>
     </div>
   );
