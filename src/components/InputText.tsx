@@ -12,6 +12,7 @@ const InputText: React.FC = () => {
   const [showInput, setShowInput] = useState(false);
   const [showInputA, setShowInputA] = useState(false);
   const [madLib, setMadLib] = useState(false);
+  const [restartMadLib, setRestartMadLib] = useState(false);
   let [story, setStory] = useState("");
 
   // State to handle the focus of the input fields.
@@ -48,6 +49,11 @@ const InputText: React.FC = () => {
     }
 
     setStory(story);
+    setInputValues({
+      noun: "",
+      verb: "",
+      adjective: "",
+    });
   };
 
   // Function to handle the input values. (When the user is on Noun the other inputs are hidden).
@@ -69,6 +75,9 @@ const InputText: React.FC = () => {
 
     if (e.target.name === "adjective") {
       setMadLib(true);
+    }
+    if (e.target.name === "madLib") {
+      setRestartMadLib(true);
     }
   };
 
@@ -121,6 +130,7 @@ const InputText: React.FC = () => {
               <button
                 className="bg-white rounded-full p-3 w-full m-5 shadow-md shadow-slate-600 hover:shadow-lg hover:shadow-slate-600 transition ease-in-out duration-200 delay-100"
                 type="submit"
+                name="madLib"
               >
                 MadLib
               </button>
@@ -131,6 +141,16 @@ const InputText: React.FC = () => {
           {story}
         </div>
       </form>
+      <div className="flex items-center justify-center">
+        {/* Button to restart the game */}
+        {restartMadLib && (
+          <div className="flex flex-col">
+            <button className="bg-white rounded-full p-3 w-full m-5 shadow-md shadow-slate-600 hover:shadow-lg hover:shadow-slate-600 transition ease-in-out duration-200 delay-100">
+              Restart MadLib
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
