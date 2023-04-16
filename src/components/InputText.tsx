@@ -1,22 +1,26 @@
 import React, { useState, useRef } from "react";
 
 const InputText: React.FC = () => {
+  // State to handle the input values
   const [inputValues, setInputValues] = useState({
     noun: "",
     verb: "",
     adjective: "",
   });
 
+  // State to handle the input fields(Show or hide).
   const [showInput, setShowInput] = useState(false);
   const [showInputA, setShowInputA] = useState(false);
   const [madLib, setMadLib] = useState(false);
   let [story, setStory] = useState("");
 
+  // State to handle the focus of the input fields.
   const input1Ref = useRef<HTMLInputElement>(null);
   const input2Ref = useRef<HTMLInputElement>(null);
   const input3Ref = useRef<HTMLInputElement>(null);
   const input4Ref = useRef<HTMLInputElement>(null);
 
+  // Function to handle the focus of the input fields
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -32,6 +36,7 @@ const InputText: React.FC = () => {
     }
   };
 
+  // Function to make the Mad Libs story.
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
@@ -45,6 +50,7 @@ const InputText: React.FC = () => {
     setStory(story);
   };
 
+  // Function to handle the input values. (When the user is on Noun the other inputs are hidden).
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
 
