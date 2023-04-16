@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const InputText: React.FC = () => {
   const [inputValues, setInputValues] = useState({
@@ -11,6 +11,26 @@ const InputText: React.FC = () => {
   const [showInputA, setShowInputA] = useState(false);
   const [madLib, setMadLib] = useState(false);
   let [story, setStory] = useState("");
+
+  const input1Ref = useRef<HTMLInputElement>(null);
+  const input2Ref = useRef<HTMLInputElement>(null);
+  const input3Ref = useRef<HTMLInputElement>(null);
+  const input4Ref = useRef<HTMLInputElement>(null);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (input1Ref.current) {
+        input2Ref.current?.focus();
+      }
+      if (input2Ref.current) {
+        input3Ref.current?.focus();
+      }
+      if (input3Ref.current) {
+        input4Ref.current?.focus();
+      }
+    }
+  };
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -55,6 +75,8 @@ const InputText: React.FC = () => {
             type="text"
             name="noun"
             placeholder="Noun"
+            ref={input1Ref}
+            onKeyDown={handleKeyDown}
             onChange={handleInputChange}
             value={inputValues.noun}
           />
@@ -66,6 +88,8 @@ const InputText: React.FC = () => {
               type="text"
               name="verb"
               placeholder="Verb"
+              ref={input2Ref}
+              onKeyDown={handleKeyDown}
               onChange={handleInputChange}
               value={inputValues.verb}
             />
@@ -78,6 +102,8 @@ const InputText: React.FC = () => {
               type="text"
               name="adjective"
               placeholder="Adjective"
+              ref={input3Ref}
+              onKeyDown={handleKeyDown}
               onChange={handleInputChange}
               value={inputValues.adjective}
             />
