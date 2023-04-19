@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const InputText: React.FC = () => {
   // State to handle the input values.
@@ -12,6 +12,7 @@ const InputText: React.FC = () => {
   const [showInput, setShowInput] = useState(false);
   const [showInputA, setShowInputA] = useState(false);
   const [madLib, setMadLib] = useState(false);
+  const [visible, setVisible] = useState(false);
   let [story, setStory] = useState("");
 
   // State to handle the focus of the input fields.
@@ -19,6 +20,13 @@ const InputText: React.FC = () => {
   const input2Ref = useRef<HTMLInputElement>(null);
   const input3Ref = useRef<HTMLInputElement>(null);
   const input4Ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 15000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Function to handle the focus of the input fields
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -144,7 +152,7 @@ const InputText: React.FC = () => {
           {story}
         </div>
         {/* Button to restart the game */}
-        {madLib && (
+        {visible && (
           <div className="flex items-center justify-center">
             <div className="flex flex-col">
               <button
