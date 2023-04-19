@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 const InputText: React.FC = () => {
-  // State to handle the input values
+  // State to handle the input values.
   const [inputValues, setInputValues] = useState({
     noun: "",
     verb: "",
@@ -12,7 +12,6 @@ const InputText: React.FC = () => {
   const [showInput, setShowInput] = useState(false);
   const [showInputA, setShowInputA] = useState(false);
   const [madLib, setMadLib] = useState(false);
-  const [restartMadLib, setRestartMadLib] = useState(false);
   let [story, setStory] = useState("");
 
   // State to handle the focus of the input fields.
@@ -25,6 +24,7 @@ const InputText: React.FC = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       e.preventDefault();
+
       if (input1Ref.current) {
         input2Ref.current?.focus();
       }
@@ -45,7 +45,7 @@ const InputText: React.FC = () => {
     if (num === 0) {
       story = `Once upon a time, there was a ${inputValues.noun} named Bob. Bob loved to ${inputValues.verb} every day, but he was a very ${inputValues.adjective} person. One day, Bob decided to ${inputValues.verb} to the top of a nearby mountain. The climb was steep and difficult, but Bob was determined. When he finally reached the top, he was exhausted but elated. The view from the summit was breathtaking! Bob sat down to catch his breath and took in the ${inputValues.adjective} scenery around him. From that day on, Bob made a point to ${inputValues.verb} to the top of that mountain whenever he needed to clear his mind and remind himself that he was capable of achieving great things.`;
     } else {
-      story = `There once was ${inputValues.adjective} cat named Fluffy. Fluffy loved to ${inputValues.verb} around the house all day, but sometimes he got bored. One day, he discovered ${inputValues.noun} in the corner of the room. Fluffy was intrigued and began to ${inputValues.verb}with it. Before he knew it, he had created a huge mess! Fluffy's owner walked in and was not happy about the mess, but couldn't help but laugh at the sight of Fluffy covered in ${inputValues.adjective} ${inputValues.noun}. From then on, Fluffy's owner made sure to give him plenty of toys to play with so he wouldn't make any more ${inputValues.adjective} messes.`;
+      story = `There once was ${inputValues.adjective} cat named Fluffy. Fluffy loved to ${inputValues.verb} around the house all day, but sometimes he got bored. One day, he discovered ${inputValues.noun} in the corner of the room. Fluffy was intrigued and began to ${inputValues.verb} with it. Before he knew it, he had created a huge mess! Fluffy's owner walked in and was not happy about the mess, but couldn't help but laugh at the sight of Fluffy covered in ${inputValues.adjective} ${inputValues.noun}. From then on, Fluffy's owner made sure to give him plenty of toys to play with so he wouldn't make any more ${inputValues.adjective} messes.`;
     }
 
     setStory(story);
@@ -54,6 +54,11 @@ const InputText: React.FC = () => {
       verb: "",
       adjective: "",
     });
+  };
+
+  // Function to restart the Mad Libs story.
+  const handleRestart = () => {
+    window.location.reload();
   };
 
   // Function to handle the input values. (When the user is on Noun the other inputs are hidden).
@@ -75,9 +80,6 @@ const InputText: React.FC = () => {
 
     if (e.target.name === "adjective") {
       setMadLib(true);
-    }
-    if (e.target.name === "madLib") {
-      setRestartMadLib(true);
     }
   };
 
@@ -137,20 +139,25 @@ const InputText: React.FC = () => {
             </div>
           )}
         </div>
+        {/* Story */}
         <div className="p-5 text-center text-2xl text-slate-700 m-9">
           {story}
         </div>
-      </form>
-      <div className="flex items-center justify-center">
         {/* Button to restart the game */}
-        {restartMadLib && (
-          <div className="flex flex-col">
-            <button className="bg-white rounded-full p-3 w-full m-5 shadow-md shadow-slate-600 hover:shadow-lg hover:shadow-slate-600 transition ease-in-out duration-200 delay-100">
-              Restart MadLib
-            </button>
+        {madLib && (
+          <div className="flex items-center justify-center">
+            <div className="flex flex-col">
+              <button
+                className="bg-white rounded-full p-3 w-full m-5 shadow-md shadow-slate-600 hover:shadow-lg hover:shadow-slate-600 transition ease-in-out duration-200 delay-100 "
+                type="button"
+                onClick={handleRestart}
+              >
+                Restart MadLib
+              </button>
+            </div>
           </div>
         )}
-      </div>
+      </form>
     </div>
   );
 };
