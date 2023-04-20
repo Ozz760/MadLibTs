@@ -24,7 +24,7 @@ const InputText: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 15000);
+    }, 30000);
     return () => clearTimeout(timer);
   }, []);
 
