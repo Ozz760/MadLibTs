@@ -6,9 +6,9 @@ This is a simple MVP of a MadLibs game written in Typescript. It is a simple gam
 
 ### Screenshots
 
-![Screenshot of MadLibTs](Start_of_Game.png)
+![Screenshot of MadLibTs](/assets/Start_Game.png)
 
-![Screenshot of Full game](Full_Game.png)
+![Screenshot of Full game](/assets/Full_Game.png)
 
 ### Technologies
 
